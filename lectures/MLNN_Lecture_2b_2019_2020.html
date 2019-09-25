@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="en">
+
+
+   
+    
+	<head>
+		<meta charset="utf-8">
+
+		<title>Machine Learning and Deep Learning</title>
+                <meta name="author" content="Roberto Santana">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- <link rel="stylesheet" href="css/reveal.css">  -->
+                <link rel="stylesheet" href="css/fullscreen-img.css">
+                <link rel="stylesheet" href="css/added_css/notebook.css">
+   	        <link rel="stylesheet" href="css/reveal.css">
+                <link rel="stylesheet" href="css/theme/nncourse.css" id="theme">
+                                
+
+	</head>
+
+	<body>
+
+
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+                                          <div class="my_container">
+                                        <h2>Machine Learning and Neural Networks</h2>
+					<p>Roberto Santana and Unai Garciarena<p>
+					<p>Department of Computer Science and Artificial Intelligence</p>
+                                        <p>University of the Basque Country</p>
+                          		 </div>   
+				</section>
+
+
+
+
+                                 <section>
+                                        <div class="my_container">
+                                        <h3>Table of Contents </h3>
+                                        
+                                         <table style="width:100%"; border=solid>
+
+                                           <tr>
+
+					     <td> <p class="paragraph2"> <a href="#/sec:ML_Definitions"> Task, Experience, Performance </a></p></td>
+                                             <td> <p class="paragraph2"> <a href="#/sec:ML_S_SEARCH_CLASS"> Learning and optimization </a></p></td>
+                                              <td> <p class="paragraph2"> <a href="#/sec:ML_S_CLF"> Linear models for supervised learning </a></p></td>
+			         
+                                                
+                                                    
+                                           </tr>
+					   
+							  
+					    <tr>
+
+					         <td> <p class="paragraph2"> <a href="#/sec:ML_S_LR"> Linear regression </a></p></td>      
+
+                                                 <td> <p class="paragraph2"> <a href="#/sec:ML_S_LDA"> Linear Discriminant Analysis </a> </p></td>
+				                 <td> <p class="paragraph2"> <a href="#/sec:ML_S_LOGR"> Logistic regression  </a></p></td>   
+
+			                  
+                                            </tr>
+										      
+					   <tr>
+
+				                 <td> <p class="paragraph2"> <a href="#/sec:ML_S_CLF_OTHER"> Other classifiers </a></p></td>   
+
+						 <td> <p class="paragraph2"> <a href="#/sec:ML_S_DT"> Decision trees </a></p></td>      
+
+					                   
+                                           </tr>
+					   										      
+					
+
+				         </table>	  
+                          	     </div>   
+
+				</section>
+
+				 <section>
+    				      <section id="sec:ML_Definitions">                   
+                                                 <div class="my_container">            	                
+                           		         <h3>MLNN course</h3>
+                           		         <h4>Recommended bibliography</h4>
+                                                  
+                                                     <ul>  
+                                                       <li class="paragraph2"> I. Goodfellow and Y. Bengio and A. Courville. <a href="http://www.deeplearningbook.org/"> Deep Learning.</a> Chapter. 5. <a href="https://www.deeplearningbook.org/contents/ml.html"> Machine Learning Basics.</a>. MIT Press. 2016.  </li>
+
+ 					          <li class="paragraph2">  K. P. Murphy. <a href="https://www.cs.ubc.ca/~murphyk/MLbook/"> Machine learning. A probabilistic perspective.</a> MIT Press. 2012. </li>
+
+ 					          <li class="paragraph2">  (Auxiliar bibliography) G. Thomas. <a href="https://gwthomas.github.io/docs/math4ml.pdf"> Mathematics for Machine Learning. </a>  2018. </li>
+
+				
+
+						  
+						     </ul>
+
+                                                     
+                          		 </div>                                     
+                                                   <aside class="notes">
+                                                       What is ML? 
+                                            	   </aside>
+
+                             	  </section>
+
+				   <section id="sec:ML_Definitions">
+				  
+
+                                                 <div class="my_container">            	                
+                           		         <h3>What is machine learning?</h3>
+                           		         <h4>Definitions</h4>
+                                                  
+                                                     <ul>  
+                                                       <li class="paragraph2"> The capacity of a computer to  <mark class="red">learn from experience</mark>, i.e., to modify its processing on the basis of newly acquired information. (Oxford dictionary).</li>
+
+      		           			         <li class="paragraph2"> ML is the field of study that gives computers the <mark class="red">ability to learn</mark>  without being explicitly programmed (Samuel:1959).</li>
+       
+                                                         <li class="paragraph2"> Make the computer  <mark class="red">to adapt</mark>  to new circumstances and <mark class="red">to detect and extrapolate</mark>  patterns. </li>
+							 
+							 <li class="paragraph2">A computer program is said to  <mark class="red">learn from experience</mark>  E with respect to some task T and some performance measure P, <mark class="red">if its performance</mark>  on T, as measured by P, <mark class="red">improves with experience</mark> E (Mitchell:1997). </li>
+
+ 
+                                                          </ul>
+
+                                                       <p class="paragraph2"> I. Goodfellow and Y. Bengio and A. Courville. <a href="http://www.deeplearningbook.org/"> Deep Learning.</a>. MIT Press. 2016. </p>	                                                   
+                          		 </div>                                     
+                                                   <aside class="notes">
+                                                       What is ML? 
+                                            	   </aside>
+
+                             	  </section>
+
+
+				  <section>                   
+                                                 <div class="my_container">            	                
+                           		         <h3>What is machine learning?</h3>
+                           		         <h4>Definitions</h4>
+
+                                                     <ul>                                                             
+     		           			           <li class="paragraph2">A computer program is said to  <mark class="red">learn from experience</mark>  E with respect to some task T and some performance measure P, <mark class="red">if its performance</mark>  on T, as measured by P, <mark class="red">improves with experience</mark> E (Mitchell:1997). </li>                                                      
+                                                     </ul>
+						  <span class="fragment">   
+						  <h4>Components</h4>
+                                                     <ol>  
+                                                           <li class="paragraph2"> The experience  <mark class="red">E</mark>.</li>
+      		           			           <li class="paragraph2"> The task <mark class="red" >T</mark> .</li>
+                                                           <li class="paragraph2"> The performance measure <mark class="red" >P</mark>.</li>						
+                                                     </ol>
+					
+
+                                                                                            
+
+                          			 </div>
+						                <p class="paragraph2"> I. Goodfellow and Y. Bengio and A. Courville. <a href="http://www.deeplearningbook.org/"> Deep Learning.</a>. MIT Press. 2016. </p>	                                                 
+                                                   <aside class="notes">
+                                                       What is ML? 
+                                            	   </aside>
+
+                             	  </section>
+
+				  <section>                   
+                                             <div class="my_container">
+   				                 <mark class="red"></mark>
+                           		         <h3>Experience E</h3>
+
+                                                     <ul>                                                             
+     		           			       <li class="paragraph2"> Most of ML algorithms that we will consider understand or represent experience as a <mark class="red">dataset of examples</mark>. </li>
+     		           				 <li class="paragraph2"> An example is <mark class="red">a collection of features</mark> that have been quantitatively measured from some object or event that we want the ML system to process.</li>
+     		           				 <li class="paragraph2"> We usually represent an example as  <mark class="red"> a vector \( {\bf{x}} \in \mathcal{R}^n \)</mark>, where each entry \(x_i\) is a feature. </li>
+							 <li class="paragraph2"> One common way of representing a database is with a <mark class="red">design matrix</mark>, where each row represents an example and each column a feature.</li>
+     		           				 <li class="paragraph2"> For supervised classification problems, the class or target variable is part of the experience.</li> 
+					
+						       
+                                                    </ul>
+						                                                    	                                                 
+                                                     
+
+                          		     </div>
+					        <p class="paragraph2"> I. Goodfellow and Y. Bengio and A. Courville. <a href="http://www.deeplearningbook.org/"> Deep Learning.</a>. MIT Press. 2016. </p>
+                                                   <aside class="notes">
+                                                       What is ML? 
+                                            	   </aside>
+
+                             	  </section>
+
+
+				  <section>                   
+                                             <div class="my_container">
+   				                 <mark class="red"></mark>
+                           		         <h3>Task T</h3>
+
+                                                     <ul>                                                             
+     		           			       <li class="paragraph2"> The task is the final problem the ML is intended to solve. The same task can be solved  <mark class="red">using different ML algorithms</mark>.</li>					     
+						     </ul>
+
+			                          <span class="fragment">
+						  <h4>Examples of tasks</h4>
+
+                                                     <ul>                                                             
+     		           			       <li class="paragraph2"><mark class="red">Classification</mark>: The ML algorithm is asked to specify which of k categories some example belongs to.</li>
+
+						       							 
+						  </span>
+			                          <span class="fragment">
+
+						    <li class="paragraph2"><mark class="red">Regression</mark>: To predict a numerical value given some example.</li>
+
+						  </span>
+			                          <span class="fragment">
+     		           			    <li class="paragraph2"><mark class="red">Transcription</mark>: Observe a relatively unstructured representation of some kind of data and transcribe it to a discrete or textual form .</li>
+
+						   </span>
+			                          <span class="fragment">
+						       <li class="paragraph2"><mark class="red">Translation</mark>: Given a sequence of symbols in some language, transcribe it to another language.</li>    		           			    
+						      
+						   </span> 
+						     </ul>
+						                                                    
+
+                          		     </div>
+					       <p class="paragraph2"> I. Goodfellow and Y. Bengio and A. Courville. <a href="http://www.deeplearningbook.org/"> Deep Learning.</a>. MIT Press. 2016. </p>	                                          
+                                                   <aside class="notes">
+                                                       What is ML? 
+                                            	   </aside>
+
+                                  </section>
+				  <section>                   
+                                             <div class="my_container">
+   				                 <mark class="red"></mark>
+                           		         <h3>Task T</h3>
+
+						  <h4>More examples of tasks</h4>
+
+
+                                                     <ul>                                                             
+     		           			       <li class="paragraph2"><mark class="red">Structured output</mark>: Involves any task where the output is a vector (or other data structure containinng multiple values) with important relationships between the elements.</li>
+
+						    <li class="paragraph2"><mark class="red">Anomaly detection</mark>: Given a set of objects or events, the task is to identify some of them as unusual or atypical.</li>
+
+     		           			    <li class="paragraph2"><mark class="red">Synthesis and sampling</mark>: To generate new examples that are similar to those in the training data.</li>
+
+						       <li class="paragraph2"><mark class="red">Denoising</mark>: The algorithm is given a corrupted example  \( \tilde{{\bf{x}}} \in \mathcal{R}^n \)  and it should output the clean example  \( {\bf{x}} \in \mathcal{R}^n \).</li>    		           			    
+						       
+				        
+                                                     </ul>				 
+
+                                                                                                    
+                                                     
+
+                          		     </div>
+					     <p class="paragraph2"> I. Goodfellow and Y. Bengio and A. Courville. <a href="http://www.deeplearningbook.org/"> Deep Learning.</a>. MIT Press. 2016. </p>	    
+                                                   <aside class="notes">
+                                                       What is ML? 
+                                            	   </aside>
+
+                             	  </section>
+
+				  <section>                   
+                                             <div class="my_container">
+   				                 <mark class="red"></mark>
+                           		         <h3>Performance Measure P</h3>
+
+                                                     <ul>                                                             
+     		           			       <li class="paragraph2"> A  <mark class="red">quantitative measure of the performance</mark> of the ML algorithm. Usually, <mark class="red">P is specific to the task T</mark>.</li>					     
+						     </ul>
+
+
+						  <h4>Examples of performance measures</h4>
+
+                                                     <ul>                                                             
+     		           			       <li class="paragraph2"><mark class="red">Classification</mark>: Usually, the  <mark class="red">accuracy </mark> (proportion of examples for which the model produces the <mark class="red">correct</mark> output).</li>
+
+     		           			       <li class="paragraph2"><mark class="red">Classification</mark>: Also, the <mark class="red">error rate</mark> (proportion of examples for which the model produces the <mark class="red">incorrect</mark> output).</li>				       
+
+						    <li class="paragraph2"><mark class="red">Regression</mark>: A measure of the distance between the prediction, and the target variable, for example the <mark class="red">mean squared error </mark> .</li>
+
+						       <li class="paragraph2"><mark class="red">Denoising</mark>: The amount of corruption that has been removed from the original example.</li>    		          			    
+						    
+                                                     </ul>
+						 
+                                                    
+
+                          		     </div>
+                                                <p class="paragraph2"> I. Goodfellow and Y. Bengio and A. Courville. <a href="http://www.deeplearningbook.org/"> Deep Learning.</a>. MIT Press. 2016. </p>	                                                 
+
+                                                   <aside class="notes">
+                                                       What is ML? 
+                                            	   </aside>
+
+                                  </section>
+			      </section>
+
+			       <section  id="sec:ML_S_SEARCH_CLASS">
+                                      <section>
+                                                 <div class="my_container">
+                                                   <h3>Supervised learning</h3>                                                   
+                                                   <h4>Learning as a search process</h4>
+                                                   <ol>
+
+      		 				      <li class="paragraph2"><a href="#/sec:ML_S_CL_LEARNING"> Learning methods </a>  </li>
+						      <li class="paragraph2"><a href="#/sec:ML_S_CL_OPT"> Optimization algorithms </a> </li>                                                    </ol>						                                                                                     </div>                                                         
+                                                   
+                                                   <aside class="notes">
+  					
+                                            	   </aside>
+        			      </section>
+
+                                     <section id="sec:ML_S_CL_LEARNING">
+                                          <div class="my_container">                             	        
+                                 	  <h3>Classifiers</h3>
+                                 	  <h4>The three components of learning algorithms</h4>
+
+
+                                           <ol>
+                                              <li class="paragraph2"> <mark class="red">Representation</mark>: Choosing a representation for a classifier influence to a large extent the set of classifiers that it can learn. This set is called the hypothesis space of the learner.</li>
+                                              <li class="paragraph2"><mark class="red">Evaluation</mark>: To distinguish between good and poor classifiers at least one  criterion is required that is usually evaluating using an objective function or scoring function.  </li>
+                                              <li class="paragraph2"><mark class="red">Optimization</mark>: The search for the best classifier in the hypothesis space is usually posed as an optimization problem. The choice of the optimization technique is key to the efficiency of the learner. </li>
+                                            
+                                           </ol>             
+                                                                         
+                                                    
+                          		  </div>
+					   <p class="paragraph2">P. Domingos.  <a href="http://www.idi.ntnu.no/emner/tdt4173/papers/domingos-cacm12.pdf"> A few useful things to know about machine learning.</a> Communications of the ACM, 55(10), 78-87. 2012.</p>                  
+                                           <aside class="notes">
+                                            Probability analysis of the classification problem
+                                           </aside>
+
+ 				    </section>   
+                                    <section>
+                                        <div class="my_container">
+                                 	  <h4>The three components of learning algorithms</h4>
+                                      
+                                        
+                                         <table style="width: 100%;">
+                                                  <tr>
+                                                      <td><p class="paragraph3"><mark class="red">Representation</mark></p></td>
+                                                      <td><p class="paragraph3"><mark class="red">Evaluation</mark></p></td>
+                                                      <td><p class="paragraph3"><mark class="red">Optimization</mark></p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3"><mark class="green">Instances</mark></p></td>
+                                                      <td><p class="paragraph3">Accuracy/Error rate</p></td>
+                                                      <td><p class="paragraph3"><mark class="violet">Combinatorial optimization</mark></p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3">--K-nearest neighbor</p></td>
+                                                      <td><p class="paragraph3">Precision and recall</p></td>
+                                                      <td><p class="paragraph3">--Greedy search</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3">-- Support vector machines</p></td>
+                                                      <td><p class="paragraph3">Squared error</p></td>
+                                                      <td><p class="paragraph3">--Beam search</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3"><mark class="green">Hyperplanes</mark></p></td>
+                                                      <td><p class="paragraph3">Likelihood</p></td>
+                                                      <td><p class="paragraph3">--Branch-and-bound</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3">--Naive Bayes</p></td>
+                                                      <td><p class="paragraph3">Posterior probability</p></td>
+                                                      <td><p class="paragraph3"><mark class="violet">Continuous optimization</mark></p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3">--Logistic regression</p></td>
+                                                      <td><p class="paragraph3">Information gain</p></td>
+                                                      <td><p class="paragraph3">-Unconstrained</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3"><mark class="green">Decision trees</mark></p></td>
+                                                      <td><p class="paragraph3">KL divergence</p></td>
+                                                      <td><p class="paragraph3">--Gradient descent</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3"><mark class="green">Set of rules</mark></p></td>
+                                                      <td><p class="paragraph3">Cost/Utility</p></td>
+                                                      <td><p class="paragraph3">--Conjugate gradient</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3">--Propositional rules</p></td>
+                                                      <td><p class="paragraph3">Margin</p></td>
+                                                      <td><p class="paragraph3">--Quasi-Newton methods</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3">--Logic programs</p></td>
+                                                      <td><p class="paragraph3"></p></td>
+                                                      <td><p class="paragraph3">-Constrained</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3"><mark class="green">Neural networks</mark></p></td>
+                                                      <td><p class="paragraph3"></p></td>
+                                                      <td><p class="paragraph3">--Linear programming</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3"><mark class="green">Graphical models</mark></p></td>
+                                                      <td><p class="paragraph3"></p></td>
+                                                      <td><p class="paragraph3">--Quadratic programming</p></td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td><p class="paragraph3">--Bayesian networks</p></td>
+                                                      <td><p class="paragraph3"></p></td>
+                                                      <td><p class="paragraph3"></p></td>
+                                                  </tr>
+                                                              
+				              </table>	  
+                          	              </div>   
+			            </section>
+
+
+				                                    <section>
+                                          <div class="my_container">
+
+                             	          <h3>Classification problems</h3>              
+                                 	  <h4>Probability analysis</h4>                                        
+                                                                          
+                          		      <p class="paragraph2"> Let \( p({\bf{x}}) \) be a probability distribution defined on a discrete feature  \( {\bf{x}} \). \( p({\bf{x}}) \) satisfies the following: </p>
+
+                                              <p class="paragraph2"> 
+                                                \[
+                                                      p[{\bf{X}} = {\bf{x}}] = p({\bf{x}})
+                                                   
+                                                \] 
+                                              </p>        
+
+                                               <p class="paragraph2"> 
+                                                \[ 
+                                                   p({\bf{x}}) \geq 0 \; \; \forall  {\bf{x}} 
+                                                \] 
+                                               </p>   
+
+                                               <p class="paragraph2">                                 
+                                                \[
+                                                      \sum_{{\bf{x}}}  p({\bf{x}}) = 1                                                  
+                                                \] 
+                                              </p>        
+                          		 </div>   
+                	               		 
+
+                                           <aside class="notes">
+                                                 Originally used to describe the probability distribution of particles in a system over various possible states.
+                                           </aside>
+
+ 				      </section>    
+ 
+
+
+                                     <section>
+                                          <div class="my_container">
+                             	          <h3>Classification problems</h3>              
+                                 	  <h4>Probability analysis</h4>
+
+                                           <ul>
+
+                                              <li class="paragraph2"> Let  \( P(C_1) \) and \( P(C_2) \) be the probabilities we know a priori that an observation belongs to clases  \( C_1 \) and \( C_2 \), respectively. </li>
+                                              <li class="paragraph2"> \( P(C_i,{\bf{x}}) \) is the <mark class="red">joint probability</mark>  that  \({\bf{X}} \) takes value  \( {\bf{x}} \) and belongs to class  \( C_i \) </li>
+                                              <li class="paragraph2"> We define  \( P(C_i|{\bf{x}}) \) as the  <mark class="red">conditional probability </mark>  that \( {\bf{X}} \)  takes value \( {\bf{x}} \) given that it belongs to class  \( C_i \)  </li>
+                                             
+                                           <ul/>                                        
+                                                    
+                          		 </div>  
+                                           <aside class="notes">
+                                            Probability analysis of the classification problem
+                                           </aside>
+
+ 				    </section>    
+                                    <section>
+                                          <div class="my_container">
+                             	          <h3>Classification problems</h3>              
+                                 	  <h4>Probability analysis</h4>
+                                           <mark class="red"></mark>
+                                           <ul>
+                                              <li class="paragraph2"> We know that   \( P(C_i,{\bf{x}}) =  P({\bf{x}}|C_i) P(C_i) \) and  \( P(C_i,{\bf{x}}) =  P(C_i|{\bf{x}}) P({\bf{x}}) \). </li>                                        
+                                              <li class="paragraph2"> Therefore,
+                                               \[
+                                                     P(C_i|{\bf{x}}) = \frac{P({\bf{x}}|C_i) P(C_i)}{P({\bf{x}})}
+                                               \]
+                                              </li>
+                                              <li class="paragraph2"> This expression is referred as <mark class="red">Bayes's theorem</mark>. </li>
+                                              <li class="paragraph2"> \(P(C_i) \) is known as the <mark class="red">prior probability</mark>. </li>
+                                              <li class="paragraph2"> \( P({\bf{x}}|C_i) \) is the <mark class="red">class conditional probability</mark> of  \(P({\bf{x}}) \) for class  \( C_i \). </li>
+                                              <li class="paragraph2">  \(P(C_i|{\bf{x}})\) is the <mark class="red">posterior probability</mark></li>
+                                           <ul/>                                        
+                                                    
+                          		 </div>  
+                                           <aside class="notes">
+                                              The importance of Baye's theorem lies int the fact that it re-expresses the posterior probabilities in terms of quantities which are more often much easier to calculate. 
+                                              We can use the theorem also for problems where the features are continuous and the class conditional probability is a density function.
+                                           </aside>
+
+ 				      </section>    
+                                    <section>
+                                          <div class="my_container">
+                             	          <h3>Classification problems</h3>              
+                                 	  <h4>Probability analysis</h4>
+
+                                           <ul>
+
+                                              <li class="paragraph2"> The posterior probability  \( P(C_i|{\bf{x}}) \) gives the probability of a pattern belonging to class  \( C_i \) once we have observed the feature vector  \( {\bf{x}} \). </li>
+                                              <li class="paragraph2"> The probability of misclassification is minimized by selecting the clas  \( C_i \)  having the largest posterior probability, i.e., 
+                                               \[
+                                                     P(C_i|{\bf{x}}) > P(C_j|{\bf{x}}) \; \; \forall j \neq i.
+                                               \]
+                                              </li>              
+                                           <ul/>                                        
+                                                    
+                          		 </div>  
+                                           <aside class="notes">
+                                            Probability analysis of the classification problem
+                                           </aside>
+
+ 				    </section>  
+                                    <section>
+                                          <div class="my_container">
+                             	          <h3>Classification problems</h3>              
+                                 	  <h4>Classifiers</h4>
+
+                                           <ul>
+
+                                              <li class="paragraph2"> According to the largest posterior probability \( P(C_i|{\bf{x}}) \), a  classifier provides a rule for assigning each point of the feature space to one of \(k\) classes. </li>
+                                              <li class="paragraph2"> Therefore, a classifier divides the feature space into \( k \) decision regions  \( \{ \mathcal{R}_1, \dots,  \mathcal{R}_k \} \). </li>
+                                               <li class="paragraph2"> We can extend the idea of using posterior probabilities for each class by defining a set of <mark class="red">discriminant functions</mark>  \( y_1({\bf{x}}), \dots,  y_k({\bf{x}}) \) such that an input vector  \( {\bf{x}} \) is assigned to class \( C_i \) if
+                                               \[
+                                                     y_i({\bf{x}}) > y_j({\bf{x}}) \; \; \forall j \neq i.
+                                               \]
+                                              </li>             
+                                            <ul/>                                        
+                                                    
+                          		   </div>  
+                                           <aside class="notes">
+                                                                Probability analysis of the classification problem
+                                           </aside>
+
+        				   </section>    
+
+                                          <section>
+                                                 <mark class="red"></mark>
+                                                 <div class="my_container">                             	                   
+                                                   <h3>Supervised learning</h3>   
+                                                   <h4>Generative versus discriminative classifiers</h4>
+                                                   <ol>
+
+						          <li class="paragraph2"><mark class="red">Generative</mark>: Provide a model of how the observations can be generated given the class. </li>
+						          <li class="paragraph2"><mark class="red">Discriminative</mark>: Does not provide a model but allow the discrimination of the observation according to the classes.</li>
+
+						          <li class="paragraph2">  Discriminative models learn the boundary between classes while generative models model the distribution of individual classes.</li>
+						          <li class="paragraph2">Examples of generative models: <mark class="red"></mark>naive Bayes. </li>
+	 				                  <li class="paragraph2">Examples of discriminative models: <mark class="red"></mark>decision trees. </li>
+                                                   <mark class="red"></mark>
+                                                   </ol>						           
+                               		           </div>                                                       
+                                                   <aside class="notes">
+  						   
+                                           	   </aside>
+        			          </section>
+   
+
+
+                              </section>
+
+                                <section>
+				       <section id="sec:ML_S_CLF">
+                                                 <div class="my_container">
+                                                   <h3>Supervised learning</h3>                                                   
+                                                   <h4>Regressors and classifiers</h4>
+                                                   <ol>
+
+ <td> <p class="paragraph2"> <a href="#/sec:ML_NNs">  </a></p></td>  
+
+						          <li class="paragraph2"><a href="#/sec:ML_S_LR"> Linear regression </a> </li>
+                                                          <li class="paragraph2"><a href="#/sec:ML_S_LDA"> Linear Discriminant Analysis </a> </li>
+						          <li class="paragraph2"><a href="#/sec:ML_S_LOGR"> Logistic regression  </a> </li>
+      		 		
+                                                   
+                                                   </ol>						           
+                                                   
+                                                    <p class="paragraph2"> C. M. Bishop.  <a href="http://cs.du.edu/~mitchell/mario_books/Neural_Networks_for_Pattern_Recognition_-_Christopher_Bishop.pdf">Neural Networks for Pattern Recognition.</a>  Oxford University Press. 2005.</p>                                 
+                                                    <p class="paragraph2"> P. Domingos. <a href="http://www.idi.ntnu.no/emner/tdt4173/papers/domingos-cacm12.pdf"> A few useful things to know about machine learning.</a> Communications of the ACM, 55(10), 78-87. 2012.</p>                  
+     
+                          		           </div>                                                         
+                                                   
+                                                   <aside class="notes">
+  					
+                                            	   </aside>
+        			          </section>
+
+
+
+                                         <section id="sec:ML_S_LR" data-transition="none">     
+                                           <h3>Supervised learning</h3>       
+                                	  <h4>Regression</h4>                                                 
+                                                <div class="container">
+                                                                                          
+                                                   <ul>                                                                                                                              <p class="paragraph2"><img src="href=../../imgl2/classregions/Regression_1.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                           <ul/>                                                                  
+                                                 </div>            
+                                                                                                                    
+
+                                
+                                                   <aside class="notes">
+                                                       Classification problems can vary in their complexity.                   
+                                            	   </aside>
+        		  	         </section>
+                                         <section data-transition="none">                                                             		               <h3>Supervised learning</h3>       
+                                	  <h4>Regression</h4>                                                 
+                                                <div class="container">
+
+                                                   <ul>                                                                                                                              <p class="paragraph2"><img src="href=../../imgl2/classregions/Regression_2.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                           <ul/>                                                                  
+                                                 </div>            
+                                                                                                                    
+
+                                
+                                                   <aside class="notes">
+                                                       Classification problems can vary in their complexity.                   
+                                            	   </aside>
+        		  	         </section>
+
+			 
+                                   <section>
+                                          <div class="my_container">
+
+                             	          <h3>Supervised learning</h3>              
+                                 	  <h4>Linear regression</h4>                                        
+
+					     <p class="paragraph2"> A set of \(N\) tuples  \( (x^1,y^1), \dots (x^N,y^N) \) is given, where \(y\) is the target or dependent variable and \(x\) is the covariate, independent variable or predictor. The task is to predict  \(y\) given  \(x\). </p></p>
+                                            
+					     
+					  
+                          	             <p class="paragraph2"> <mark class="red">General regression model</mark>:
+                                                \[
+                                                      y  =  f(x) + \epsilon 
+                                                   
+                                                \] 
+                                             </p>
+
+                                             <p class="paragraph2"> where \( \epsilon \) is the irreducible error that does not depend on x. </p>
+
+					  
+                          	             <p class="paragraph2"> <mark class="red">Linear regression model</mark>:
+                                                \[
+                                                      f(x) =  \beta_1 x + \beta_0
+                                                   
+                                                \] 
+                                             </p>
+					     
+					      <p class="paragraph2"> <mark class="red"> Linear regression estimate</mark>:
+                                                \[
+                                                      \hat{y}  =  \hat{\beta_1} x + \hat{\beta_0}
+                                                   
+                                                \] 
+                                              </p>        
+
+					       <p class="paragraph2"> The<mark class="red"> residual error</mark> is the difference between the prediction and the true value.
+                                                \[
+                                                      e^i  = y^i - \hat{y}^i   
+                                                   
+                                                \] 
+                                             </p>
+
+
+                              		     </div>   
+
+ 	               		              <p class="paragraph2">   K. P. Murphy. <a href="https://mitpress.mit.edu/books/machine-learning-0"> Machine learning. A probabilistic perspective.</a> MIT Press. 2012. </p>                                                                                                
+
+                                               <aside class="notes">                                                       
+                                               </aside>
+
+                                   </section>
+                                   <section>
+                                          <div class="my_container">
+
+                             	          <h3>Supervised learning</h3>              
+                                 	  <h4>Linear regression</h4>                                        
+
+					      
+					      <p class="paragraph2">  The <mark class="red">mean squared error</mark> is usually used:
+                                                \[
+                                                      MSE  = \frac{1}{N} \sum_{i=1}^N  (y^i - \hat{y}^i)^2 
+                                                   
+                                                \] 
+                                              </p>
+
+					  <p class="paragraph2">  The  <mark class="red">parameters of the model</mark>  that minimize this error are learned:
+
+					        \[
+                                                    \argmin_{\beta_0,\beta_1} \frac{1}{N} \sum_{i=1}^N  (y^i - (\beta_1 x^i + \beta_0 - \hat{y}^i))^2 
+                                                   
+                                                \] 
+                                          
+                                              </p>  
+
+					      
+
+                                          <p class="paragraph2"> After differentiating with respect to \( \beta_0,\beta_1 \) and equalling to \(0\), we get:
+
+					   \[
+                                                    \hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x}; \; \;  \hat{\beta_1} = \frac{\sum_{i=1}^N x^i y^i - N \bar{x} \bar{y}} {\sum_{i=1}^N (x^i)^2  - N \bar{x}^2}  
+                                                   
+                                            \]
+
+					    where \(\bar{x}\) and \(\bar{y}\) are the mean of \(x\) and  \(y\)  as computed from the data.
+					  </p>  
+
+                              		     </div>   
+
+ 	               		              <p class="paragraph2">   K. P. Murphy. <a href="https://mitpress.mit.edu/books/machine-learning-0"> Machine learning. A probabilistic perspective.</a> MIT Press. 2012. </p>                                                                                                
+
+
+                                               <aside class="notes">
+                                                       
+                                               </aside>
+
+ 				   </section>
+
+
+				   
+
+                                   <section>
+                                          <div class="my_container">
+
+                             	          <h3>Supervised learning</h3>              
+                                 	  <h4>Multiple linear regression</h4>                                        
+
+					  <p class="paragraph2"> In multiple linear regression we have multiple covariates, represented as a vector  \({\bf{x}} \). The model is linear on the covariates. </p>
+
+					   <p class="paragraph2"> <mark class="red">Multiple linear regression model</mark>:
+                                                \[
+                                                      f(x) =   \beta_0 + \beta_1 x_1 + \beta_2 x_2  + \dots  + \beta_n x_n + \epsilon
+                                                   
+                                                \] 
+                                             </p>
+                          		      <p class="paragraph2"> Let \( {\bf{w}} \) be the model weight vector containing \(\beta\) values, ,   \( {\bf{w}}^T {\bf{x}} \) represents the inner or scalar product between the input vector \( {\bf{x}} \) and the weight vector. </p>
+
+                                              <p class="paragraph2"> Then, the  <mark class="red"> multiple linear regression model </mark> in matrix form is expressed as:
+                                                \[
+                                                      y({\bf{x}}) = {\bf{w}}^T {\bf{x}} + \epsilon = \sum_{j=1}^{n} w_jx_j + \epsilon 
+                                                   
+                                                \] 
+                                              </p>        
+
+					      <p class="paragraph2"> Estimates of \(w\) are found by <mark class="red"> minimizing the MSE</mark> in a way similar to the case of a single covariate. That way the parameters of the model are learned. </p>
+
+                              		     </div>   
+
+ 	               		              <p class="paragraph2">   K. P. Murphy. <a href="https://mitpress.mit.edu/books/machine-learning-0"> Machine learning. A probabilistic perspective.</a> MIT Press. 2012. </p>                                                                                                
+
+
+                                               <aside class="notes">
+                                                       
+                                               </aside>
+
+ 				           </section>   
+ 
+                                          <section data-transition="none">                                                             		  
+                             	          <h3>Supervised learning</h3>       
+                                	  <h4>How to separate the classes?</h4>                                                 
+                                                <div class="container">
+                                                <div class="left">                                                 
+                                                   <ul>                                                                                                                                                        <p class="paragraph2"><img src="href=../../img/classregions/Linear_Class_No_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                           <ul/>                                                                  
+                                                 </div>            
+                                                                                                                    
+                                               </div>                           
+                                
+                                                   <aside class="notes">
+                                                       Classification problems can vary in their complexity.                   
+                                            	   </aside>
+        		  	         </section>
+                                          <section data-transition="none">                                
+                             	          <h3>Supervised learning</h3>       
+                                	  <h4>A line (hyperplane) is sufficient</h4>                                                       
+                                                <div class="container">                                             
+                                                <div class="left">                                                 
+                                                   <ul>                                                                                                                                                         <p class="paragraph2"><img src="href=../../img/classregions/Linear_Class_HP.png"  height="420" width="500"></p>                            
+                                                   <ul/>                                                                  
+                                                 </div>            
+                                                                                                                      
+                                               </div>                           
+                                
+                                                   <aside class="notes">
+                                                       Classification problems can vary in their complexity.                   
+                                            	   </aside>
+        			      </section>
+                                      <section data-transition="none">       
+                             	            <h3>Supervised learning</h3>                                
+                               	           <h4>Are these two classification problems similarly difficult?</h4>                                                      
+                                              <div class="container">
+                                                <div class="right">      
+                                                  <ul>                                                                                                                                                            <p class="paragraph2"><img src="href=../../img/classregions/OverlapLinear_Class_No_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                        <ul/>                                                              
+                                                 </div>   
+                                               
+
+                                                <div class="left">                                                 
+                                                   <ul>                                                                                                                                                           <p class="paragraph2"><img src="href=../../img/classregions/Linear_Class_HP.png"  height="420" width="500"></p>                            
+                                                   <ul/>                                                                  
+                                                 </div>                                                                   
+                                                 </div>                           
+                                
+                                                   <aside class="notes">
+                                                       Classification problems can vary in their complexity.                    
+
+                                            	   </aside>
+        			       </section>
+                                       <section data-transition="none">      
+                             	          <h3>Supervised learning</h3>     
+                                          <h4>No. In the right figure, the line does not perfectly separate classes.</h4>                                           
+                                                  
+                                              <div class="container">
+                                                <div class="right">      
+                                                  <ul>                                                                                                                                               <p class="paragraph2"><img src="href=../../img/classregions/OverlapLinear_Class_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                               <ul/>                                                              
+                                                 </div>   
+                                               
+
+                                                <div class="left">                                                 
+                                                   <ul>                                                                                                                                               <p class="paragraph2"><img src="href=../../img/classregions/Linear_Class_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                <ul/>                                                                  
+                                                 </div>                                                           
+                                                 </div>                           
+                                
+                                                   <aside class="notes">
+                                                       Classification problems can vary in their complexity.                    
+
+                                            	   </aside>
+        			     </section>
+
+
+                                    <section  id="sec:ML_S_LDA">
+                                          <div class="my_container">
+
+                             	          <h3>Supervised learning</h3>              
+                                 	  <h4>Linear Discriminant Analysis</h4>                    
+
+                                         <ul>  
+
+                  		               <li class="paragraph2"> LDA learns a <mark class="red">linear combinations of the features</mark> as a way to separate observations from the two classes. </li>
+
+                                              <li class="paragraph2"> It is assumed that \(p({\bf{x}}|y=0) \) and \(p({\bf{x}}|y=1) \)     follow a similar distribution. </li>
+
+                                               <li class="paragraph2"> Furthermore, it is assumed that the two conditional distributions follow <mark class="red">a normal distribution</mark>  with the same covariance matrix  \( \Sigma \) and means \( \mu_0 \) and \( \mu_1 \), respectively.  </li>
+
+                                               <li class="paragraph2"> Given a vector of features \( {\bf{x}} \) , the decision criterion is  \(w {\bf{x}} > c \), where  \(w\) and \(c\) <mark class="red"> have a closed-form expression</mark>  that depends on the parameters of the normal distributions.   </li>
+                                         </ul>                            			        
+                                                
+
+                              		     </div>   
+
+ 	               		       
+                                               <aside class="notes">
+                                                       
+                                               </aside>
+
+ 				    </section>
+
+
+				    <section>
+                                          <div class="my_container">
+
+                             	          <h3>Supervised learning</h3>              
+                                 	  <h4>Linear Discriminant Analysis</h4>                    
+
+                                          <ul>
+
+
+                                               <p class="paragraph2"> Computing the prediction with LDA:
+                                                \[
+                                                      p(y=1|x)  =  sigm \left( {\bf{w}}^T ({\bf{x}} - {\bf{x}}_0) \right) 
+                                                   
+                                                \] 
+                                              </p>        
+
+
+                                               <p class="paragraph2"> Assuming that the a-priori probability of the two classes is the same:
+
+
+						 
+                                                 \[
+						    \begin{align}
+                                                      w &= \Sigma^{-1} (\mu_1 - \mu_0)  \\
+                                                      {\bf{x}}_0 &=  \frac{1}{2} (\mu_1 + \mu_0)
+						    \end{align}
+						 \] 
+                                              </p>        
+
+                                           </ul>                            
+
+					 
+                              		     </div>   
+
+ 	               		       
+                                               <aside class="notes">
+                                                       
+                                               </aside>
+				     </section>    
+
+
+
+                                     <section  id="sec:ML_S_LOGR">
+                                          <div class="my_container">
+
+                             	          <h3>Supervised learning</h3>              
+                                 	  <h4>Logistic regression</h4>                                        
+                                                                          
+                          		      <p class="paragraph2"> Let the Bernoulli distribution be defined as: 
+
+                                                \[
+                                                      Ber({\bf{x}},p) = p^{{\bf{x}}} (1-p)^{1-{\bf{x}}} \;  \forall {\bf{x}} \in \{0,1\} 
+                                                   
+                                                \] 
+                                              </p>        
+
+                                              <p class="paragraph2">and the sigmoid function defined as: 
+
+                                                \[
+                                                      g(\eta) =  \frac{1}{1+e^{-\eta}} = \frac{e^{\eta}}{e^{\eta}+1}  
+                                                   
+                                                \] 
+                                               </p>
+
+                                               <p class="paragraph2"> Then the logistic regression classifier is defined as: 
+                                                \[ 
+                                                   p(y \mid {\bf{x}}, {\bf{w}}) =  Ber(y \mid g({\bf{w}}^T {\bf{x}}))     
+                                                \] 
+                                               </p>  
+
+                              		     </div>   
+
+ 	               		              <p class="paragraph2">   K. P. Murphy. <a href="https://mitpress.mit.edu/books/machine-learning-0"> Machine learning. A probabilistic perspective.</a> MIT Press. 2012. </p>                                                                                                
+
+
+                                               <aside class="notes">
+                                                       
+                                               </aside>
+
+ 				           </section>    
+
+                                        <section>
+                             	          <h3>Supervised learning</h3>               
+
+                                              <div class="container">
+                                                  <span class="fragment"> 
+                                                  <div class="right">   
+                                                   <h4>Characteristics of the logistic function</h4>                                                          
+                                                   <ul>  
+
+                                                           <li class="paragraph2"> The output of the sigmoid (logistic, or logit) function is always in \([0,1]\). </li>   
+                                                           <li class="paragraph2"> \(g(-\infty)=0\),  \(g(\infty)=1\), and  \(g(0)=0.5\).  </li>   
+                                                
+                                                     </ul>        
+                                                     <h4>Characteristics logistic regression</h4>        
+                                                     <ul>  
+                                                           <li class="paragraph2"> It is a classification method, not a regression method.</li>
+                                                           <li class="paragraph2"> Works well for linearly separable problems. </li>                                                                                              <li class="paragraph2">Multinomial logistic regression is a classification method that generalizes logistic regression to problems with more than two classes. </li>
+                                                     </ul>                                                                      
+                                                  </div>   
+                                                  </span>
+                                                 <div class="left">
+                                                   <h4>Logistic function</h4>        
+                                                     <ul>  
+                                                            <p class="paragraph2"><img src="href=../../img/classifiers/Sigmoid_Function.png"  height="310" width="480"></p>                                                          
+                                                     </ul>                                                                                     	                       
+                                                  </div>  
+ 
+                                                  <aside class="notes">                                                       
+                                                  </aside>
+                                                                                          
+                                              </div>  
+                                    </section>
+                                     <section data-transition="none">        
+                               	            <h3>Supervised learning</h3>                               
+                                            <h4>What about the problem in the left figure. Is it easier? Does a line suffice in this case?</h4>                                                  
+                                              <div class="container">
+                                                <div class="right">      
+                                                  <ul>                                                                                                                                               <p class="paragraph2"><img src="href=../../img/classregions/OverlapLinear_Class_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                               <ul/>                                                              
+                                                 </div>   
+                                               
+
+                                                <div class="left">                                                 
+                                                   <ul>                                                                                                                                               <p class="paragraph2"><img src="href=../../img/classregions/NonLinear_Class_No_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                <ul/>                                                                  
+                                                 </div>            
+                                               
+                                              
+                                                                               
+                                                 </div>                           
+                                
+                                                   <aside class="notes">
+                                                       Classification problems can vary in their complexity.                    
+
+                                            	   </aside>
+        			       </section>
+                                       <section data-transition="none">                     
+                             	          <h3>Supervised learning</h3>                  
+                                	  <h4>It is easy but a line is not sufficient.</h4>                                                 
+                                                  
+                                              <div class="container">
+                                                <div class="right">      
+                                                  <ul>             
+                                               
+                                               <p class="paragraph2"><img src="href=../../img/classregions/OverlapLinear_Class_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                     <ul/>                                                              
+                                                 </div>   
+                                               
+
+                                                <div class="left">                                                 
+                                                   <ul>                                                                                                                                               <p class="paragraph2"><img src="href=../../img/classregions/NonLinear_Class_HP.png"  height="420" width="500"></p>                            
+                                                                                                                                                                                                      <ul/>                                                                  
+                                                 </div>          
+                                                                               
+                                                 </div>                           
+                                
+                                                      <aside class="notes">
+                                                           Classification problems can vary in their complexity.                    
+                                             	      </aside>
+        			       </section>
+
+				</section>
+
+				<section>			
+                                        <section id="sec:ML_S_CLF_OTHER">
+                                                 <div class="my_container">
+                                                   <h3>Supervised learning</h3>                                                   
+                                                   <h4>Classifiers</h4>
+                                                   <ol>
+
+      		 				          <li class="paragraph2"><a href="#/sec:ML_S_DT"> Decision trees </a>  </li>
+						          <li class="paragraph2"><a href="#/sec:ENSEMBLES"> Ensembles </a> </li>
+
+						          <li class="paragraph2"><a href="#/sec:ML_S_SVM"> Support Vector Machines </a> </li>
+                                                       
+ 		
+                                                   
+                                                   </ol>						           
+                                                   
+                                         
+     
+                          		           </div>                                                         
+                                                   
+                                                   <aside class="notes">
+  					
+                                            	   </aside>
+        			          </section>
+                                           <section id="sec:ML_S_DT" data-background-color="#e6ff99">
+                                                  <h3>Supervised learning</h3>   
+                                                   <h4>Decision Tree</h4>
+                                                      <img src="href=../../img/ml_types/Donostia_Flat.png"  height="450" width="1100">           
+
+                                           </section>
+
+					   <section>
+                                                 <mark class="red"></mark>
+                                                 <div class="my_container">
+						   <h3>Decision Trees: How does it work?</h3>
+                                                   <ul>
+
+						          
+						          <li class="paragraph2">Each <mark class="red">internal node</mark> corresponds to a test of the value of one of the input attributes \(A_i\) and the <mark class="red">branches from the node</mark> are labeled with the possible values of the attribute. </li>
+						          <li class="paragraph2">Each <mark class="red">leaf node</mark> in the tree specifies a value to be returned by the function. </li>
+                                                          <li class="paragraph2">A learning algorithm is used to extract the tree structure from the data. </li>
+
+                                                   
+                                                   </ul>
+                                                   <p class="paragraph2">S. Russell and P. Norvig.  <a href="http://aima.cs.berkeley.edu/"> Artificial Intelligence. A Modern Approach.</a> Third Edition. Pearson Press. 2010. </p>      
+						           
+                               		           </div>                                                       
+                                                   <aside class="notes">
+  						   
+                                            	   </aside>
+        			          </section>
+                                          <section>
+                                                 <mark class="red"></mark>
+                                                 <div class="my_container">
+                                                   <h3>Supervised learning</h3>   
+                                                   <h4>Decision Trees</h4>
+                                                   <ol>
+
+						          <li class="paragraph2">A decision tree represents a function that takes as input a  <mark class="red">vector of attribute values</mark>  and returns a decision (<mark class="red">a single output value</mark>). </li>
+						          <li class="paragraph2">It reaches its decision by performing a <mark class="red">sequence of tests</mark>. </li>
+                                                  <span class="fragment"> 
+						          <li class="paragraph2">Each <mark class="red">internal node</mark> corresponds to a test of the value of one of the input attributes \(A_i\) and the <mark class="red">branches from the node</mark> are labeled with the possible values of the attribute. </li>
+						          <li class="paragraph2">Each <mark class="red">leaf node</mark> in the tree specifies a value to be returned by the function. </li>
+                                                  </span> 
+                                                  <span class="fragment"> 
+                                                          <li class="paragraph2">For many problems, the decision tree format yields a nice, <mark class="red">concise result </mark>. </li>
+                                                  </span> 
+                                                   
+                                                   </ol>
+                                                   <p class="paragraph2">S. Russell and P. Norvig.  <a href="http://aima.cs.berkeley.edu/"> Artificial Intelligence. A Modern Approach.</a> Third Edition. Pearson Press. 2010. </p>      
+						           
+                               		           </div>                                                       
+                                                   <aside class="notes">
+  						   
+                                            	   </aside>
+        			          </section>
+
+
+                                         <section data-background-image="https://lab.montera34.com/airbnb/donostia/images/densidad-airbnb-donostia_2.png" data-background-size="1600px">
+                                            
+                                        <h3>Renting a shared flat in Donosti </h3>
+
+                                        <table id="customers">
+                                        <colgroup>                                         
+                                          <col style="background-color:yellow">
+                                          <col span="8" style="background-color:white">
+                                          <col span="3" style="background-color: #bfff00">
+
+                                        </colgroup>
+                                             <tr> <th>Criteria/Flat</th> <th>F1</th><th>F2</th><th>F3</th><th>F4</th> <th>F5</th><th>F6</th><th>F7</th><th>F8</th><th>C1</th><th>C2</th><th>C3</th> </tr>
+                                             <tr><td>Price </td> <td>high </td><td>low</td><td>med.</td><td>high</td><td>low</td><td>med.</td><td>med.</td><td>high</td><td>med.</td><td>high</td><td>low</td> </tr>
+                                             <tr><td>Distance to University </td><td>far </td> <td>far</td><td>close</td>  <td>close </td> <td>close</td><td>close</td><td>close</td><td>close</td><td>far</td><td>far</td><td>close</td> </tr>
+                                             <tr><td>Parking </td><td>no</td> <td>no</td><td>no</td>  <td>no</td> <td>no</td><td>yes</td><td>no</td><td>no</td><td>no</td><td>no</td><td>yes</td> </tr>
+                                             <tr><td>Cool Roommates? </td><td>cool </td> <td>cool</td><td>cool</td>  <td>no</td> <td>no</td><td>cool</td><td>cool</td><td>cool</td><td>cool</td><td>cool</td><td>no</td> </tr>
+                                             <tr><td>Flat owner </td><td>nice</td> <td>nice</td><td>not nice</td>  <td>nice </td> <td>not nice</td><td>not nice</td><td>not nice</td><td>?</td><td>nice</td><td>?</td><td>?</td> </tr>
+                                             <tr><td>Heating for winter</td><td>no</td> <td>no</td><td>no</td>  <td>yes</td> <td>yes</td><td>no</td><td>yes</td><td>yes</td><td>no</td><td>no</td><td>yes</td> </tr>
+                                             <tr><td>Distance to Bus </td><td> close</td> <td>close</td><td>close</td>  <td>far </td> <td>close</td><td>close</td><td>far</td><td>far</td><td>far</td><td>close</td><td>close</td> </tr>
+                                              <tr><td>Room space </td><td>med.</td> <td>large</td><td>small</td>  <td>small </td> <td>small</td><td>med.</td><td>small</td><td>small</td><td>med.</td><td>small</td><td>small</td> </tr>
+                                             <tr><td>Noisy area </td><td>no</td> <td>yes</td><td>yes</td>  <td> no</td> <td>no</td><td>yes</td><td>yes</td><td>no</td><td>no</td><td>no</td><td>no</td> </tr>
+                                             <tr><td>Mother advice  </td><td>yes </td> <td>?</td><td>no</td>  <td>?</td> <td>no</td><td>yes</td><td>yes</td><td>no</td><td>yes</td><td>no</td><td>no</td> </tr>
+
+                                              <tr><td>Cat </td><td>no</td> <td>yes</td><td>no</td>  <td>no</td> <td>yes</td><td>yes</td><td>no</td><td>yes</td><td>yes</td><td>no</td><td>no</td> </tr>
+                                              <tr><td>Kitchen </td><td>small </td> <td>small</td><td>large</td>  <td>med.</td> <td>med.</td><td>small</td><td>small</td><td>med.</td><td>large</td><td>small</td><td>small</td> </tr>
+                                              <tr><td>Distance to beach </td><td>far</td> <td>far</td><td>close</td>  <td>close </td> <td>far</td><td>far</td><td>far</td><td>far</td><td>far</td><td>far</td><td>far</td> </tr>
+                                              <tr><td>Floor </td><td>2</td> <td>7</td><td>1</td>  <td>1</td> <td>0</td><td>3</td><td>1</td><td>2</td><td>4</td><td>0</td><td>3</td> </tr>
+                                              <tr><td>Elevator </td><td>no </td> <td>yes</td><td>no</td>  <td> no</td> <td>no</td><td>no</td><td>no</td><td>no</td><td>no</td><td>yes</td><td>yes</td> </tr>
+                                              <tr><td>Bars around </td><td>yes</td> <td>yes</td><td>yes</td>  <td>yes </td> <td>no</td><td>yes</td><td>no</td><td>no</td><td>no</td><td>yes</td><td>no</td> </tr>
+ 
+                                              <tr  style="background-color: #ffb3b3"><td> Did (Will) I like it?</td><td> no</td> <td>yes</td><td>no</td>  <td>no</td> <td>no</td><td>yes</td><td>yes</td><td>no</td><td>?</td><td>?</td><td>?</td> </tr>
+                                              </table>
+ 		 	                 </section>
+                                         <section data-background-image="https://lab.montera34.com/airbnb/donostia/images/densidad-airbnb-donostia_2.png" data-background-size="1600px">
+                                            
+                                        <h3>Renting a shared flat in Donosti </h3>
+
+                                        <table id="customers">
+                                        <colgroup>                                         
+                                          <col style="background-color:yellow">
+                                          <col span="8" style="background-color:white">
+                                          <col span="3" style="background-color: #bfff00">
+
+                                        </colgroup>
+                                             <tr> <th>Criteria/Flat</th> <th>F1</th><th>F2</th><th>F3</th><th>F4</th> <th>F5</th><th>F6</th><th>F7</th><th>F8</th><th>C1</th><th>C2</th><th>C3</th> </tr>
+                                             <tr><td>Price </td> <td>high </td><td>low</td><td>med.</td><td>high</td><td>low</td><td>med.</td><td>med.</td><td>high</td><td>med.</td><td>high</td><td>low</td> </tr>
+                                             <tr><td>Distance to University </td><td>far </td> <td>far</td><td>close</td>  <td>close </td> <td>close</td><td>close</td><td>close</td><td>close</td><td>far</td><td>far</td><td>close</td> </tr>
+                                             <tr><td>Cool Roommates? </td><td>cool </td> <td>cool</td><td>cool</td>  <td>no</td> <td>no</td><td>cool</td><td>cool</td><td>cool</td><td>cool</td><td>cool</td><td>no</td> </tr>
+                                             <tr><td>Mother advice  </td><td>yes </td> <td>?</td><td>no</td>  <td>?</td> <td>no</td><td>yes</td><td>yes</td><td>no</td><td>yes</td><td>no</td><td>no</td> </tr>
+
+                                              <tr><td>Cat </td><td>no</td> <td>yes</td><td>no</td>  <td>no</td> <td>yes</td><td>yes</td><td>no</td><td>yes</td><td>yes</td><td>no</td><td>no</td> </tr>
+                                              <tr  style="background-color: #ffb3b3"><td> Did (Will) I like it?</td><td> no</td> <td>yes</td><td>no</td>  <td>no</td> <td>no</td><td>yes</td><td>yes</td><td>no</td><td>?</td><td>?</td><td>?</td> </tr>
+
+                                         </table>
+                                              
+
+			 	          </section>
+                                           <section data-background-color="#e6ff99">
+                                                  <h3>Supervised learning</h3>   
+                                                   <h4>Decision Tree</h4>
+                                                      <img src="href=../../img/ml_types/Donostia_Flat.png"  height="450" width="1100">           
+
+                                          </section>
+                                          <section>
+                                                 <mark class="red"></mark>
+                                                 <div class="my_container">
+                                                   <h3>Supervised learning</h3>   
+                                                   <h4>Learning decision trees from examples</h4>
+                                                   <ol>
+
+						          <li class="paragraph2">The algorithm to learn the decision trees  <mark class="red"> (\(DT\_Learning\))</mark> adopts a greedy divide-and-conquer strategy: always test the most important attribute first. </li>
+                                                  <span class="fragment"> 
+						          <li class="paragraph2">The test divides the problem up into smaller problems that can be  <mark class="red">solved recursively</mark>. </li>			
+                                                  </span> 			         
+                                                  <span class="fragment"> 
+						          <li class="paragraph2"> The most important attribute is the one that makes the  <mark class="red"> most important difference</mark> to the classification of an example. </li>
+                                                  </span> 			         
+                                                  <span class="fragment"> 
+						          <li class="paragraph2"> The goal is to get to the correct classification with  <mark class="red">a small number of tests</mark>.</li>					
+                                                  </span> 			         
+                                                  <span class="fragment"> 
+                                                          <li class="paragraph2"> To identify the most important attributes, different <mark class="red"> importance  measures </mark> are defined.</li>						         
+                                                  </span> 
+                                                   
+                                                   </ol>
+                                                   <p class="paragraph2">S. Russell and P. Norvig.  <a href="http://aima.cs.berkeley.edu/"> Artificial Intelligence. A Modern Approach.</a> Third Edition. Pearson Press. 2010. </p>      
+						           
+                               		           </div>                                                       
+                                                   <aside class="notes">
+  						   
+                                            	   </aside>
+        			          </section>
+
+                                          <section>
+                                                 <mark class="red"></mark>
+                                                 <div class="my_container">
+                                                   <h3>Supervised learning</h3>   
+                                                   <h4>Learning decision trees: Split metrics</h4>
+                                                   <ol>
+                                                        <li class="paragraph2"> At each step, the DT learning algorithm finds the pair of attribute and cutting point which makes the maximal impurity decrease.</li>	
+
+
+  
+                                                          <li class="paragraph2">Let \(p_i\) denote the probability of a class computed from the observations at a given node.</li>	
+
+  
+                                                          <li class="paragraph2"> <mark class="red">Gini impurity</mark>:
+                                                          \[
+							     1- \sum_{i=1}^{c} p_i^2
+ 
+							    \]
+                                                          </li>	
+
+                                                          <li class="paragraph2"><mark class="red">Entropy</mark>:
+                                                          \[
+							     - \sum_{i=1}^{c} p_i^2 log_2(p_i)
+ 
+							    \]
+                                                      
+                                                          </li>		
+                                                          <li class="paragraph2"><mark class="red">Classification error</mark>:
+                                                          \[
+							      1 - \max_{i \in \{1 \dots c\}} p_i
+ 
+							    \]
+                                                      
+                                                          </li>						         
+
+                                                   
+                                                   </ol>
+                                                 
+                               		           </div>                                                       
+                                                   <aside class="notes">
+  						   
+                                            	   </aside>
+        			          </section>
+        		                  <section data-background-image="https://lab.montera34.com/airbnb/donostia/images/densidad-airbnb-donostia_2.png" data-background-size="1600px">
+                                            
+                                        <h3>Renting a shared flat in Donosti </h3>
+
+                                        <table id="customers">
+                                        <colgroup>                                         
+                                          <col style="background-color:yellow">
+                                          <col span="8" style="background-color:white">
+                                          <col span="3" style="background-color: #bfff00">
+
+                                        </colgroup>
+                                             <tr> <th>Criteria/Flat</th> <th>F1</th><th>F2</th><th>F3</th><th>F4</th> <th>F5</th><th>F6</th><th>F7</th><th>F8</th></tr>
+                                             <tr><td>Price </td> <td>high </td><td>low</td><td>med.</td><td>high</td><td>low</td><td>med.</td><td>med.</td><td>high</td> </tr>
+                                             <tr><td>Distance to University </td><td>far </td> <td>far</td><td>close</td>  <td>close </td> <td>close</td><td>close</td><td>close</td><td>close</td> </tr>
+                                             <tr><td>Cool Roommates? </td><td>cool </td> <td>cool</td><td>cool</td>  <td>no</td> <td>no</td><td>cool</td><td>cool</td><td>cool</td> </tr>
+                                             <tr><td>Mother advice  </td><td>yes </td> <td>?</td><td>no</td>  <td>?</td> <td>no</td><td>yes</td><td>yes</td><td>no</td </tr>
+
+                                              <tr><td>Cat </td><td>no</td> <td>yes</td><td>no</td>  <td>no</td> <td>yes</td><td>yes</td><td>no</td><td>yes</td> </tr>
+                                              <tr  style="background-color: #ffb3b3"><td> Did (Will) I like it?</td><td> no</td> <td>yes</td><td>no</td>  <td>no</td> <td>no</td><td>yes</td><td>yes</td><td>no</td> </tr>
+
+                                        </table>
+
+
+					                                        <table id="customers">
+                                        <colgroup>                                         
+                                          <col style="background-color:yellow">
+                                          <col span="8" style="background-color:white">
+                                          <col span="3" style="background-color: #bfff00">
+
+                                        </colgroup>
+                                        <tr> <th>Criteria/Value</th> <th>p(class=yes)</th><th>p(class=no)</th><th>Impurity</th><th>Entropy</th> <th>Error</th>< </tr>
+																				<tr> <th>Price/high</th> <th>p(class=yes)=0</th><th>p(class=no)=1</th><th>0</th><th>0</th> <th>0</th>< </tr>
+																																       <tr> <th>Price/low</th> <th>p(class=yes)=0.5</th><th>p(class=no)=0.5</th><th>0.5</th><th>\(-2*0.5^2*log(0.5) \)</th> <th>0.5</th>< </tr>																																														           <tr> <th>cat/yes</th> <th>p(class=yes)=0.5</th><th>p(class=no)=0.5</th><th>0.5</th><th>\(-2*0.5^2*log(0.5) \)</th> <th>0.5</th>< </tr>
+		<tr> <th>cat/no </th> <th>p(class=yes)=0.25</th><th>p(class=no)=0.75</th><th>?</th><th>?</th> <th>?</th>< </tr>																																																																													      
+
+                                         </table>
+                                              
+
+			 	          </section>
+
+                                          <section data-background-color="#e6ff99">
+                                                   <h3>Decision Tree learning algorithm</h3>
+                                                      <img src="href=../../img/classifiers/decision_tree_learning_algorithm.svg"  height="450" width="1100">           
+                                                      <p class="paragraph2">S. Russell and P. Norvig.  <a href="http://aima.cs.berkeley.edu/"> Artificial Intelligence. A Modern Approach.</a> Third Edition. Pearson Press. 2010. </p>      
+
+                                          </section>
+
+                                          <section>
+                                                 <mark class="red"></mark>
+                                                 <div class="my_container">
+                                                   <h3>Supervised learning</h3>   
+                                                   <h4>Learning decision trees: Variants of the algorithm according to split criteria</h4>
+                                                   <ol>
+
+                                                          <li class="paragraph2"> Iterative Dichotomiser 3 (ID3) algorithm is based on <mark class="red">Shannon entropy</mark>.</li>	
+
+                                                          <li class="paragraph2">  C4.5 algorithm is based on Gain Ratio which is considered as a <mark class="red">normalized Shannon entropy</mark>.  </li>						         
+                                                          <li class="paragraph2">  Classification And Regression Tree (CART) algorithm is based on   <mark class="red">Gini index</mark>.      </li>						         
+
+                                                   </ol>
+                               		           </div>                                                       
+                                                   <aside class="notes">
+  						   
+                                            	   </aside>
+        			          </section>
+            		    
+                           </section>
+ 
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				history: true,
+				transition: 'linear',
+
+				math: {
+					// mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+					config: 'TeX-AMS_HTML-full'
+				},
+
+				dependencies: [
+                                        { src: 'lib/js/fullscreen-img.js' },
+					{ src: 'lib/js/classList.js' },
+					{ src: 'plugin/math/math.js', async: true }
+
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
