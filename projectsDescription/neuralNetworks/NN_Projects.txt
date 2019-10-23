@@ -1,0 +1,160 @@
+*******************************************************************************************************
+File: P9_PolychronousNetwork_Implementation_NN_D3.pdf
+Title: Implementation of a spiking NN producing polychronous patterns in Python
+
+
+ The goal of the project is to implement the spiking NN model by Izhikevich in Python.  As in other projects, a report should describe the characteristics of the design, implementation, and results. A Jupyter notebook should include calls to the implemented function that illustrate the way it works. 
+
+
+*******************************************************************************************************
+File: P14_BadgeDB_OpenApproach_NN_D2.pdf
+Title:  Neural network approaches to Reality Mining: The Badge dataset
+
+  The objective of this project is to apply one algorithm based on Neural Networks  to the \emph{Badge Dataset} dataset that allow to produce insights about the social interactions captured by the data
+
+*******************************************************************************************************
+File:  P15_RealityMiningDB_OpenApproach_NN_D2.pdf
+Title: Neural network approaches to Reality Mining: The Reality Mining dataset
+
+ The objective of this project is to apply one algorithm based on Neural Networks  to the \emph{Reality Mining} dataset that allow to produce insights about the social interactions captured by the data.
+
+
+*******************************************************************************************************
+File: P21_ML_Applications_Twitter_SOM_Clustering_NN_D1.pdf
+Title: Clustering tweets about Machine Learning using self-organizing maps
+
+ The goal of the project is to extract the most recent tweets  (e.g., from the last hour) addressing a given topic (e.g., ``Machine Learning'') and to cluster these tweets using self-organizing maps algorithm, and any predefined criterion of similarity between tweets (e.g., similarity of their content, how close is the  ML area of application they refer to, etc.). 
+
+*******************************************************************************************************
+File: P24_EEG_Eye_State_Detection_NN_D1.pdf
+Title: Predicting the eye state of a subject from EEG data using neural networks
+
+ The goal of the project is to predict the eye state of a subject (eye-open versus eye-closed) from the analysis of his/her EEG data using a neural network.
+
+*******************************************************************************************************
+File:  P33_RBM_EDAs_NN_D3.pdf
+Title: Using Restricted Boltzmann Machine as the model of an estimation of distribution algorithm
+
+ The goal of the project is to implement in Python an estimation of distribution algorithm that uses an RBM as its model and test it in the optimization of different functions. 
+
+*******************************************************************************************************
+File: P34_Parkinson_Detection_NN_D3.pdf
+Title: Evaluation of classification methods for Parkinson detection from small datasets
+
+ The goal of the project is to find suitable feature representations for this problem and compare different classifiers implemented in Python.
+
+*******************************************************************************************************
+
+File: P35_Game_NN_D2.pdf
+Title: Adding an NN component to a  PC game implementation
+
+ The goal of the project is to insert a Neural Network component as part of a computer game and show that this added component improves or enhances the game experience in anyway. The NN component can be used in ANY form,  i.e., for implementing supervised learning algorithm (regression or classification) or for any unsupervised learning task (e.g, clustering, dimensionality reduction, outlier detection, etc). 
+
+
+*******************************************************************************************************
+File: P36_GenderImageCategorization_NN_D1.pdf
+Title: Gender image categorization using deep learning
+
+  The goal of the project is to solve the task of gender image categorization using NNs on the "Database of Gender categorization". 
+
+
+*******************************************************************************************************
+File: P37_NameIdentificationUsingANNs_NN_D1.pdf
+Title: French name transcription from handwriting using deep learning
+
+   The goal of the project is to solve the task of name transcription from handwritting images implementing a NN approach and  using the "Transcriptions of names from handwriting". 
+
+
+*******************************************************************************************************
+File: P38_TwitterSelfDrivingCars_NN_D1.pdf
+Title: Inferring the actitude toward self-driving cars from tweets using an NN-based supervised classification algorithm
+
+ The goal of the project is to inferr the reactions of users to self-driving cars from their tweets. The problem can be transformed in classifying the tweets in different classes according to the sentiment they express about self-driving cars. The problem should add NN-based component. 
+
+
+*******************************************************************************************************
+File: P39_Concept_Relevance_NN_D1.pdf 
+Title: Determining tweet relevance for a given subject from the analysis of its content using NNs.
+
+The goal of the project is to predict what is the relevance of a tweet regarding self-driving. This can be posed as a classification problem in which the tweets can be classified in two classes: relevant or not relevant.  The problem should add an NN-based component.
+
+
+*******************************************************************************************************
+File: P40_Activity_Recognition_NN_D1.pdf
+Title: Activity recognition from time series using NNs
+
+ The goal of the project is to predict what type of activity is develop by $15$ individuals from the analysis of a time series produced by a wearable sensor. The problem should add an NN-based component.
+
+
+*******************************************************************************************************
+File: P41_SoftwarePrediction_NN_D1.pdf
+Title: Supervised classifiers for predicting teamwork effectiveness in software engineering projects using NNs
+
+ The goal of the project is to apply a set of classifiers to predict, using different features that describe the work of $74$ students teams, (Problem 1: Whether the project has been above or below expectations; Problem 2: Whether the product has been above or below expectations). This means that two different classification problems have to be solved using the same set of features. The problem should add an NN-based component.
+
+
+*******************************************************************************************************
+File: P42_FeatureEngineering_BCIs_NN_D3.pdf
+Title: Feature engineering methods for Brain Computer Interfaces using NNs
+
+The goal of the project is apply feature engineering techniques to classify BCI data.  The problem should add an NN-based component.
+
+
+*******************************************************************************************************
+File: P44_Izhikevich_SNN_Model_NN_D2.pdf
+Title: Simulating the Izhikevich spiking neuron model  using the Brian2 software
+
+ The goal of the project is to implement the Izhikevich's model using the Brian2 Python library.
+
+
+*******************************************************************************************************
+File: P45_Computation_with_Spikes_NN_D3.pdf
+Title: Implementation of neural codes using a spiking neuron model
+
+ The goal of the project is to implement one of the reported methods of computation with spikes, or a new one,  and demonstrate its application to a theoretical or practical problem.
+
+
+*******************************************************************************************************
+File: P61_Parkinson_Motor_Regression_NN_D2.pdf
+Title:  NN-based regression for predicting the clinician’sParkinson’s disease symptom score on the UPDRS
+scale
+
+The objective of this  project is to predict the Unified Parkinson's Disease Rating Scale (UPDRS) from a set of voice recordings.
+
+*******************************************************************************************************
+File: P62_Carbon_Nanotubes_Regression_NN_D1.pdf
+Title: Atomic coordinate prediction of carbon nanotubes with NNs
+
+The objective of this  project is to predict the atomic coordinate prediction of carbon nanotubes from a reduced number of nanotubes attributes.
+
+
+
+*******************************************************************************************************
+File: P67_OpenData_Euskadi_Regression_NN_D2.pdf
+Title: Neural network models for regression of Open Data from the Basque Country
+
+The goal of this project is to apply neural network regression methods to the analysis of open data. 
+
+
+*******************************************************************************************************
+File: P68_OpenData_Euskadi_Classification_NN_D2.pdf
+Title: Neural network models for classification of Open Data from the Basque Country
+
+The goal of this project is to apply neural network regression methods to the analysis of open data.
+
+*******************************************************************************************************
+File: P69_NeuroEvolution_DEAP_NN_D3.pdf
+Title: A DEAP-based Neuroevolution approach to enhance NN architectures
+
+ The goal of the project is to design and implement, using DEAP, a neuroevolutionary approach that  evolves the network architecture of NNs for improving their performance on a given classification or regression task. 
+
+*******************************************************************************************************
+File: P70_RBM_Learning_NN_D3.pdf
+Title: Implementing constrastive divergence algorithm for learning Restricted Boltzmann Machines
+
+The goal of the project is to implement in Python the Contrastive Divergence algorithm to learn an RBM from data. 
+
+
+
+
+

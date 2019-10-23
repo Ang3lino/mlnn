@@ -1,0 +1,141 @@
+*******************************************************************************************************
+File: P3_Parkinson_Detection_ML_D3.pdf
+Title: Evaluation of classification methods for Parkinson detection from small datasets
+
+ The goal of the project is to find suitable feature representations for this problem and compare different classifiers implemented in Python.
+
+*******************************************************************************************************
+File: P5_Game_ML_D2.pdf
+Title: Adding a ML component to a  PC game implementation
+
+ The goal of the project is to insert a ML component as part of a computer game and show that this added component improves or enhances the game experience in anyway. The component should be one or any combination of the following: 1) Supervised learning algorithm; 2) Unsupervised methods; 3) Reinforcement learning; 4) Genetic programming; but NOT a deep learning implementation.
+
+
+*******************************************************************************************************
+File: P11_LearningGraphicalStructures_ML_D1.pdf
+Title: Evaluating methods for learning graphical structures from data
+
+ The goal of the project is to compare the Python implementations of 3 or more methods for learning the graphical structure from data on a set of 5 or more datasets.
+
+*******************************************************************************************************
+File: P12_CopulaClassifiers_ML_D3.pdf
+Title: Implementation of a copula-based classifier
+
+The goal of the project is to implement a copula-based classifier in Python.
+
+
+*******************************************************************************************************
+File: P13_BadgeDB_OpenApproach_ML_D2.pdf
+Title: Machine learning approaches to Reality Mining: The Badge dataset
+
+ The objective of this project is to apply one supervised or unsupervised machine learning algorithm (except those based on NNs for which a different project is proposed) to the \emph{Badge Dataset} dataset that allow to produce insights about the social interactions captured by the data.
+
+
+*******************************************************************************************************
+File:  P16_RealityMiningDB_OpenApproach_ML_D2.pdf
+Title: Machine learning approaches to Reality Mining: The Reality Mining dataset
+
+ The objective of this project is to apply one supervised or unsupervised machine learning algorithm (except those based on NNs for which a different project is proposed) to the \emph{Reality Mining} dataset that allow to produce insights about the social interactions captured by the data.
+
+
+*******************************************************************************************************
+File: P18_URLCategorization_ML_D1.pdf
+Title: URL categorization using supervised classification algorithms
+
+ The goal of the project is to solve the URL categorization task using a supervised classification algorithm and  using a database with a  large number of  categorized websites.
+
+
+*******************************************************************************************************
+File: P19_TwitterSelfDrivingCars_ML_D1.pdf
+Title: Inferring the actitude toward self-driving cars from tweets using supervised classification algorithms
+
+ The goal of the project is to inferr the reactions of users to self-driving cars from their tweets. The problem can be transformed in classifying the tweets in different classes according to the sentiment they express about self-driving cars.
+
+
+*******************************************************************************************************
+File: P20_Concept_Relevance_ML_D1.pdf 
+Title: Determining tweet relevance for a given subject from the analysis of its content
+
+The goal of the project is to predict what is the relevance of a tweet regarding self-driving. This can be posed as a classification problem in which the tweets can be classified in two classes: relevant or not relevant.
+
+*******************************************************************************************************
+File: P22_Activity_Recognition_ML_D2.pdf
+Title: Activity recognition from time series using supervised classification algorithms
+
+ The goal of the project is to predict what type of activity is develop by $15$ individuals from the analysis of a time series produced by a wearable sensor.
+
+*******************************************************************************************************
+File: P23_EEG_Eye_State_Detection_ML_D1.pdf
+Title: Predicting the eye state of a subject from EEG data using supervised classification algorithms
+
+ The goal of the project is to predict the eye state of a subject (eye-open versus eye-closed) from the analysis of his/her EEG data using a supervised classifier.
+
+*******************************************************************************************************
+File: P25_EEG_Eye_State_Detection_DL_D1.pdf
+Title: Predicting the eye state of a subject from EEG data using deep neural networks
+
+ The goal of the project is to predict the eye state of a subject (eye-open versus eye-closed) from the analysis of his/her EEG data using a deep neural network.
+
+*******************************************************************************************************
+File: P26_SoftwarePrediction_ML_D1.pdf
+Title: Supervised classifiers for predicting teamwork effectiveness in software engineering projects
+
+ The goal of the project is to apply a set of classifiers to predict, using different features that describe the work of $74$ students teams, (Problem 1: Whether the project has been above or below expectations; Problem 2: Whether the product has been above or below expectations). This means that two different classification problems have to be solved using the same set of features. 
+
+*******************************************************************************************************
+File: P27_PredictingCompilerCombinations_ML_D1.pdf
+Title: Predicting the execution time for compilation flag configurations using supervised learning algorithms
+
+ The goal of the project is to learn a set of regression ML algorithms to predict, using different combinations of flags, what will be the expected running time of a program for a fixed set of test cases (inputs to the program)
+
+*******************************************************************************************************
+File: P28_BayesianNetworkLearning_ML_D3.pdf
+Title: A comparison of methods for structural learning of Bayesian networks from data
+
+ The goal of the project is, for a given dataset of binary values, learn the Bayesian structure and parameters using two different types of learning methods: 1) Score-based Structure Learning. 2) Conditional Independence Tests.
+
+
+*******************************************************************************************************
+File: P30_LinkStrength_BayesianNetworks_ML_D3.pdf
+Title: A implementation of link strength measures for Bayesian networks
+
+ The goal of the project is to implement an algorithm to compute different connection and link strength measures in Python.
+
+*******************************************************************************************************
+File: P31_FeatureEngineering_BCIs_ML_D3.pdf
+Title: Feature engineering methods for Brain Computer Interfaces
+
+The goal of the project is apply feature engineering techniques to classify BCI data.
+
+
+*******************************************************************************************************
+File: P32_Quantum_MachineLearning_ML_D3.pdf
+Title: Quantum machine learning algorithms
+
+ The goal of this project is to implement any possible variant of quantum machine learning methods. In particular, two possibilities are considered: 1) Modification of classical machine learning methods to exploits characteristics of quantum computation. 2) To implement a classical ML algorithm using a simulator of a quantum computer
+
+*******************************************************************************************************
+File: P57_MNIST_Clustering_ML_D1.pdf
+Title: Evaluation of unsupervised classification algorithms on the MNIST dataset
+
+The goal of the project is to compare of different clustering algorithms on the MNIST dataset.
+*******************************************************************************************************
+File: P58_Fashion_Clustering_ML_D1.pdf
+Title: Evaluation of unsupervised classification algorithms on the Fashion-MNIST dataset
+
+The goal of the project is to compare of different clustering algorithms on the Fashion-MNIST dataset.
+
+*******************************************************************************************************
+File: P59_Shape_Classification_ML_D2.pdf
+Title: Shape classification problem
+
+The goal of the project is to compare different classification algorithms on the solution of one or more shape datasets. 
+
+
+*******************************************************************************************************
+File: P60_MachineLearning_EntityRecognition_Spacy_ML_D2.pdf
+Title: Machine learning entity recognition with Spacy
+
+The goal of the project is to create a NER algorithm in Spacy able to recognize a set of ``Machine learning'' entities from the analysis of ML text.
+
+
