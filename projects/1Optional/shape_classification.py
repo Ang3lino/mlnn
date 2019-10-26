@@ -29,12 +29,15 @@ def classify_using_dataset(i: int, classifiers: []) -> None:
         display(accuracy_score(y_test, y_pred))
 
 
-x_i = X[0]
-u, v = col_j(x_i, 0), col_j(x_i, 1)
-plt.scatter(u, v, s=2)
-
-fig, axes = plt.subplots(1, 4)
-axes[0, 0].scatter(u, v, s=2)
-axes[0, 1].scatter(u, v, s=2)
-axes[0, 2].scatter(u, v, s=2)
-axes[0, 3].scatter(u, v, s=2)
+def plot_samples(X: np.array, indexes={1,2,3,4}) -> None:
+    indexes = set()
+    while len(indexes) < 4:
+        indexes.add(random.randint(0, X.shape(0)))
+    fig, axes = plt.subplots(2, 2)
+    m, n = axes.shape
+    for i in range(m):
+        for j in range(n):
+            x_i = X[indexes.pop()]
+            u, v = col_j(x_i, 0), col_j(x_i, 1)
+            axes[i,j].scatter(u, v, s=3)
+    fig.show()
