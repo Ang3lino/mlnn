@@ -1,0 +1,7 @@
+
+https://www.learnopencv.com/age-gender-classification-using-opencv-deep-learning-c-python/
+https://www.learnopencv.com/wp-content/uploads/2015/05/Computer-Vision-Resources.pdf?ck_subscriber_id=637620489
+https://github.com/arunponnusamy/gender-detection-keras/blob/master/detect_gender.py
+
+Chapter 14 20
+
