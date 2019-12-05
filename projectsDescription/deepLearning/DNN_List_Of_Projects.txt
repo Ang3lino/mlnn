@@ -1,0 +1,128 @@
+
+File: P1_Autoencoders_EDAs_DL_D3.pdf
+Title: 
+
+  To implement in Python an estimation of distribution algorithm that uses a denoising autoencoder as model  and test it in the optimization of different functions. 
+
+*******************************************************************************************************
+File:  P2_GAN_EDAs_DL_D3.pdf
+Title: Using Generative Adversarial Networks as the model of an estimation of distribution algorithm
+
+ The goal of the project is to implement in Python an estimation of distribution algorithm that uses a generative adversarial network and test it in the optimization of different functions. 
+
+*******************************************************************************************************
+
+ File:  P4_SumProductNetworks_Python_DL_D3.pdf 
+ Title: Implementing and evaluating Sum-Product networks in Python
+
+ The goal of the project is to implement, in Python, an algorithm for learning an SPN and test it as a classifier.
+
+
+*******************************************************************************************************
+File: P6_Game_DL_D2.pdf
+Title: Adding a deep learning component to a  PC game implementation
+
+ The goal of the project is to insert a deep learning  component as part of a computer game and show that this added component improves or enhances the game experience in anyway. 
+
+
+*******************************************************************************************************
+File: P8_NameIdentificationUsingDeepNetworks_DL_D1.pdf
+Title: French name transcription from handwriting using deep learning
+
+   The goal of the project is to solve the task of name transcription from handwritting images implementing a deep learning approach and  using the "Transcriptions of names from handwriting". 
+
+
+*******************************************************************************************************
+File: P46_DNNs_BCI_Recordings_ML_D3.pdf
+Title: Deep neural networks for analyzing recordings of Brain Computer Interfaces
+
+The goal of the project is apply deep neural networks for  classifying BCI data. In particular, recurrent neural networks are recommended for solving these problems.
+
+*******************************************************************************************************
+File: P47_HyperNeat_Architecture_DL_D2.pdf
+Title: An NEAT/HyperNEAT approach for evolving deep neural network architectures
+
+ The goal of the project is to apply NEAT and/or HyperNEAT to evolve the network architecture of DNNs for improving their performance on a given classification or regression task. 
+
+
+*******************************************************************************************************
+File: P48_Plankton_Conv_DL_D1.pdf
+Title: Plankton classification using convolutional networks
+
+ The goal of the project is to design a convolutional network that outputs the probability that a given image belongs to one of the possible microrganisms that forms  the plankton. 
+
+*******************************************************************************************************
+File: P49_Whale_Conv_DL_D1.pdf
+Title: Whale sound classification using deep neural networks
+
+The goal of the project is to design a deep neural network (convolutional, recurrent, or deep belief net) that outputs the probability that a given sound file is a whale call.
+
+*******************************************************************************************************
+File: P50_Galaxy_Conv_DL_D2.pdf
+Title: Galaxy classification using convolutional networks
+
+The goal of the project is to design a convolutional network that outputs the probability that a given galaxy image belongs to one of the possible categories.
+
+
+*******************************************************************************************************
+File:  P52_Chimeras_DL_D3.pdf
+Title: Fusing animal images using deep learning
+
+  Chimeras are mythical animals formed from parts of various animals.  The goal of this project is to design and implement a deep learning approach (any of those mentioned in the previous section) for naturally fusing images of different animals (e.g., cats and horses) to create a  ``chimera''.  
+
+
+*******************************************************************************************************
+File: P53_NeuroEvolution_DEAP_DL_D3.pdf
+Title: A DEAP-based Neuroevolution approach to enhance DNN architectures
+
+The goal of the project is to design and implement, using DEAP, a neuroevolutionary approach that  evolves the network architecture of DNNs for improving their performance on a given classification or regression task. 
+
+
+*******************************************************************************************************
+File: P54_Adversarial_Fashion_DL_D2.pdf
+Title: Crafting adversarial examples for the fashion MNIST dataset
+
+The goal of this project is to implement one or more approaches to create adversarial examples for the fashion MNIST dataset.
+
+
+*******************************************************************************************************
+File:  P64_RNN_News_Topic_Prediction_DL_D1.pdf
+Title: Recurrent neural networks for newsgroup documents classification
+
+The goal of the project is to implement an RNN-based model (simple RNN and LSTM neurons can
+be used) for classifying different documents in 20 classes.
+
+
+*******************************************************************************************************
+File:  P65_CNN_News_Topic_Prediction_DL_D1.pdf
+Title: Convolutional neural networks for text classification
+
+The goal of the project is to implement an CNN-based model  for classifying different documents in 20 classes. 
+
+*******************************************************************************************************
+File: P66_Music_Generation_DL_D3.pdf
+Title: Deep learning models for music generation
+
+The goal of this project is to investigate the use of deep generator models (GANs, VAEs, or any other combination of neural models) for music analysis (either music generation, music style recognition or music style transfer.
+
+
+
+*******************************************************************************************************
+File: P71_OIER_Caption_Generation.pdf
+Title: Automatic Caption Generation of Images
+
+In this project you will build a deep learning model that generates descriptions of given photograph. (See description in pdf document)
+
+
+*******************************************************************************************************
+File: P72_OIER_Sequence_labeling.pdf
+Title: Sequence Labeling: Named Entity Recognition
+In this project you will build a deep learning model that labels words in sequences. In particular, we
+will focus on Named Entity Recognition, in which the task is to find the entity type (e.g. PSERSON ,
+LOCATION , ORGANIZATION , etc.) of each word in the sequence.
+
+*******************************************************************************************************
+File: P73_Pose_Estimation_DL_D3.pdf
+Title: Application of convolutional neural networks to the problem of pose detection in images
+The goal of this project is to implement a convolutional neural network for pose estimation based on an available dataset.
+
